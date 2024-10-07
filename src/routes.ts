@@ -56,7 +56,7 @@ routes.post('/cotacoes', async (request: Request, response: Response) => {
     }).then(() => {
         response.send('Cotação criada com sucesso!').status(200)
     }).catch(() => {
-        response.send('Erro ao deletar cotação').status(404)
+        response.send('Erro ao criar cotação').status(404)
     })
 })
 
