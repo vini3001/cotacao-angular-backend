@@ -14,8 +14,11 @@ datasource db {
 }
 
 model cotacao {
-  ID            Int      @id @default(autoincrement())
-  COIN_TYPE     String   @db.VarChar(10)
-  VALUE         Float    @db.Float
-  DATE_REGISTER DateTime @default(now()) @db.DateTime()
+  ID             Int      @id @default(autoincrement())
+  DOLAR_VALUE    Float    @db.Float
+  EURO_VALUE     Float    @db.Float
+  PESOS_VALUE    Float    @db.Float
+  VALUE          Float    @db.Float
+  DATE_REGISTER  DateTime @default(now()) @db.DateTime()
+  DATE_APURATION DateTime @db.DateTime()
 }

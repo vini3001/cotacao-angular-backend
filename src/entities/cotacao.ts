@@ -1,6 +1,9 @@
 export interface Cotacao {
     id: number
-    tipo_moeda: string
+    valor_dolar: number
+    valor_euro: number
+    valor_pesos: number
     valor: number
     data_registro: Date
+    data_apuracao: Date
 }

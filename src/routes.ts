@@ -14,9 +14,12 @@ routes.get('/cotacoes/:id', async (request: Request, response: Response) => {
         if (data !== null) {
             const cotationsFormatted: Cotacao = {
                 id: data.ID,
-                tipo_moeda: data.COIN_TYPE,
+                valor_dolar: data.DOLAR_VALUE,
+                valor_euro: data.EURO_VALUE,
+                valor_pesos: data.PESOS_VALUE,
                 valor: data.VALUE,
-                data_registro: data.DATE_REGISTER
+                data_registro: data.DATE_REGISTER,
+                data_apuracao: data.DATE_APURATION
             }
 
             response.json(cotationsFormatted)
@@ -31,9 +34,12 @@ routes.get('/cotacoes', async (request: Request, response: Response) => {
         const cotationsFormatted = data.map((cotation) => {
             const formatted: Cotacao = {
                id: cotation.ID,
-               tipo_moeda: cotation.COIN_TYPE,
+               valor_dolar: cotation.DOLAR_VALUE,
+               valor_euro: cotation.EURO_VALUE,
+               valor_pesos: cotation.PESOS_VALUE,
                valor: cotation.VALUE,
-               data_registro: cotation.DATE_REGISTER
+               data_registro: cotation.DATE_REGISTER,
+               data_apuracao: cotation.DATE_APURATION
             }
     
             return formatted
@@ -50,8 +56,11 @@ routes.post('/cotacoes', async (request: Request, response: Response) => {
 
     await prisma.cotacao.create({
         data: {
-            COIN_TYPE: cotationFormatted.tipo_moeda,
-            VALUE: cotationFormatted.valor
+            DOLAR_VALUE: cotationFormatted.valor_dolar,
+            EURO_VALUE: cotationFormatted.valor_euro,
+            PESOS_VALUE: cotationFormatted.valor_pesos,
+            VALUE: cotationFormatted.valor,
+            DATE_APURATION: cotationFormatted.data_apuracao
         }
     }).then(() => {
         response.send('Cotação criada com sucesso!').status(200)
