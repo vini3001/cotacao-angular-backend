@@ -47,7 +47,7 @@ routes.get('/cotacoes', async (request: Request, response: Response) => {
 
         response.json(cotationsFormatted).status(200)
     }).catch(() => {
-        response.send('Erro ao deletar cotação').status(404)
+        response.send('Erro ao buscar cotação').status(404)
     })
 })
 
